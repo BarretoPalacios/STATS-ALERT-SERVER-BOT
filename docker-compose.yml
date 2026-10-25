@@ -1,0 +1,21 @@
+services:
+  server-stats-bot:
+    build: .
+    container_name: server-stats-bot
+    restart: unless-stopped
+    init: true
+    env_file:
+      - .env
+    environment:
+      DISK_PATH: ${DISK_PATH:-/host}
+    pid: host
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /:/host:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

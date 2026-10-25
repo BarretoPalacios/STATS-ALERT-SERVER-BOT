@@ -1,0 +1,4 @@
+python-telegram-bot==21.7
+psutil==6.1.0
+docker==7.1.0
+python-dotenv==1.0.1
